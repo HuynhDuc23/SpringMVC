@@ -10,4 +10,5 @@ public interface ClubService {
     public void saveClub(Club club);
     public ClubDto findClubById(Long Id);
     public void updateClub(ClubDto clubDto);
+    public void delete(Long Id);
 }
