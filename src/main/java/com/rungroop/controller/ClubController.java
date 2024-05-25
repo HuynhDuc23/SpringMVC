@@ -3,9 +3,11 @@ package com.rungroop.controller;
 import com.rungroop.dto.ClubDto;
 import com.rungroop.models.Club;
 import com.rungroop.service.ClubService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,20 +39,18 @@ public class ClubController {
     @GetMapping("/clubs/{clubId}/edit")
     public String editClubForm(@PathVariable("clubId") Long clubId , Model model){
         ClubDto club =  clubService.findClubById(clubId);
-        if(club != null){
-            System.out.println("OK");
-        }else{
-            System.out.println("NO ok");
-        }
-
         model.addAttribute("club",club);
         return "clubs-edit";
     }
     @PostMapping("/clubs/{clubId}/edit")
-    public String updateClub(@PathVariable("clubId") Long clubId , @ModelAttribute("club") ClubDto club){
-           club.setId(clubId);
-           clubService.updateClub(club);
-           return "redirect:/clubs";
+    public String updateClub(@PathVariable("clubId") Long clubId , @Valid @ModelAttribute("club") ClubDto club , BindingResult bindingResult , Model model){
+        if(!bindingResult.hasErrors()){
+            club.setId(clubId);
+            clubService.updateClub(club);
+            return "redirect:/clubs";
+        }
+        model.addAttribute("club" , club);
+        return "clubs-edit";
     }
 
 }
