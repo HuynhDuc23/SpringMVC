@@ -63,5 +63,11 @@ public class ClubController {
         clubService.delete(clubId);
         return "redirect:/clubs";
     }
+    @PostMapping("/clubs/search")
+    public String searchClub(@RequestParam("query") String query, Model model){
+        List<ClubDto> clubs =  clubService.searchClubs(query);
+        model.addAttribute("clubs" , clubs);
+        return "clubs-list";
+    }
 
 }
