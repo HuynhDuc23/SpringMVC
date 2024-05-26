@@ -24,7 +24,7 @@
 <!--                            delete-->
                             <div class="mt-2">
                                 <a class="btn btn-primary" th:href="@{/clubs/{clubId}/delete(clubId=${club.getId()})}" >Delete</a>
-
+                                <a class="btn btn-primary" th:href="@{/events/{clubId}/new(clubId=${club.getId()})}" >Create Event</a>
                             </div>
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
