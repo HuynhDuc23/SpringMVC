@@ -1,6 +1,7 @@
 package com.rungroop.service.impl;
 
 import com.rungroop.dto.EventDto;
+import com.rungroop.mapper.EventMapper;
 import com.rungroop.models.Club;
 import com.rungroop.models.Event;
 import com.rungroop.repository.ClubRepository;
@@ -8,6 +9,9 @@ import com.rungroop.repository.EventRepository;
 import com.rungroop.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -22,22 +26,16 @@ public class EventServiceImpl implements EventService {
     @Override
     public void createEvent(Long clubId, EventDto eventDto) {
         Club club = clubRepository.findById(clubId).get();
-        Event event = mapToEvent(eventDto);
+        Event event = EventMapper.mapToEvent(eventDto);
         event.setClub(club);
         eventRepository.save(event);
     }
 
-    private Event mapToEvent(EventDto eventDto) {
-        Event event = Event.builder()
-                .id(eventDto.getId())
-                .name(eventDto.getName())
-                .type(eventDto.getType())
-                .photoUrl(eventDto.getPhotoUrl())
-                .createdOn(eventDto.getCreatedOn())
-                .updateOn(eventDto.getUpdateOn())
-                .startTime(eventDto.getStartTime())
-                .endTime(eventDto.getEndTime())
-                .build();
-        return event;
+    @Override
+    public List<EventDto> findAllEvents() {
+        List<Event> events = eventRepository.findAll();
+        return events.stream().map(event->EventMapper.mapToEventDto(event)).collect(Collectors.toList());
     }
+
+
 }

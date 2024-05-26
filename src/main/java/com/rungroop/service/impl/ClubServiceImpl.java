@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.rungroop.mapper.ClubMapper.mapToClub;
+import static com.rungroop.mapper.ClubMapper.mapToClubDto;
+
 @Service
 public class ClubServiceImpl implements ClubService {
 
@@ -54,26 +57,5 @@ public class ClubServiceImpl implements ClubService {
         return clubs.stream().map((club)->mapToClubDto(club)).collect(Collectors.toList());
     }
 
-    private Club mapToClub(ClubDto clubDto) {
-        Club club = Club.builder().Id(clubDto.getId())
-                .content(clubDto.getContent())
-                .title(clubDto.getTitle())
-                .photoUrl(clubDto.getPhotoUrl())
-                .createdOn(clubDto.getCreatedOn())
-                .updatedOn(clubDto.getUpdatedOn())
-                .build();
-        return club;
-    }
 
-    public ClubDto mapToClubDto(Club club) {
-        ClubDto clubDto =  ClubDto.builder()
-                .Id(club.getId())
-                .title(club.getTitle())
-                .content(club.getContent())
-                .photoUrl(club.getPhotoUrl())
-                .createdOn(club.getCreatedOn())
-                .updatedOn(club.getUpdatedOn())
-                .build();
-        return clubDto;
-    }
 }
