@@ -27,8 +27,19 @@ public class UserServiceImpl implements UserService {
         userEntity.setUsername(registrationDto.getUsername());
         userEntity.setPassword(registrationDto.getPassword());
         userEntity.setEmail(registrationDto.getEmail());
-        Role role = roleRepository.findByRole("USER");
+        Role role = roleRepository.findByName("USER");
         // list
         userEntity.setRoles(Arrays.asList(role));
+        userRepository.save(userEntity);
+    }
+
+    @Override
+    public UserEntity findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public UserEntity findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
