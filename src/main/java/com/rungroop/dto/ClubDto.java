@@ -1,22 +1,22 @@
 package com.rungroop.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rungroop.models.Event;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "events")
 public class ClubDto {
     private Long Id ;
     @NotEmpty(message = "Title not empty !")

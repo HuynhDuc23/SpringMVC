@@ -8,7 +8,6 @@
     <title>Club Create</title>
 </head>
 <body>
-
     <section layout:fragment="body" class="py-5">
         <!-- Page content-->
         <div class="container mt-5">
@@ -20,15 +19,11 @@
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">Welcome to Blog Gorunapp</h1>
-
-<!--                            delete-->
                             <div class="mt-2">
                                 <a class="btn btn-primary" th:href="@{/clubs/{clubId}/delete(clubId=${club.getId()})}" >Delete</a>
                                 <a class="btn btn-primary" th:href="@{/events/{clubId}/new(clubId=${club.getId()})}" >Create Event</a>
                             </div>
-
                         </header>
-
                     </article>
                     <!-- Comments section-->
                     <section class="mb-5">
@@ -38,8 +33,8 @@
 
                                 <div class="d-flex mb-4">
                                     <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle" th:src="${club.getPhotoUrl()}"  alt="..." /></div>
-                                    <div class="flex-shrink-0"><img class="rounded-circle" th:src="${event.photoUrl}"  alt="..." /></div>
+                                    <div class="flex-shrink-0"><img class="rounded-circle" th:src="${event.getPhotoUrl()}"  alt="..." /></div>
+                                    <div class="flex-shrink-0"><img class="rounded-circle" th:src="${event.photoUrl} ? 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIALUAwAMBIgACEQEDEQH/xAAbAAEBAAMBAQEAAAAAAAAAAAAABQEEBgMCB//EADAQAQABAwEGBQMDBQEAAAAAAAABAgMEEQUhMUGR0RIVUVJxYYGxEyLBI0JygvAy/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAIB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/aQGpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAY13TM6aR6gyNG/tSxamYo1uVRx04dWnVtm7O+i3bj5mZBaEWjbN3++3bmPpMw3Mfali7pFetuZ4a8OoN4YiddOH2ZAAAAAAAAAAAAAAAAB81VxRRVXXMRTG+ZQc/OuZMzTTPhtRwj1bO28idYx6Z3RGtX8JIM8tDVgBnXfqxyAG7gZ1zFmKapmq16enwvUVxXTFVE6xO+JcorbEyJ1nHqn60fQFcAAAAAAAAAAAAAAAHMZVc3ci5XyqrnpyeL6mJ8U/L5AAAAAe2LX+lkW6/bXGvw8X1ETM/eAdWAAAAAAAAAAAAAAADm8+1NrLuU8vFNUfEtZc2vizetRdojWujdMRzRAYAAAAbOz7U3sy1TyirxT8f9+Wut7HxJs2/1a91dfCPSAUQAAAAAAAAAAAAAAAEnP2Z4pm5i8edHZWY0BytVNVMzTVExVHr2Y/Dp7ti1ej+rRFX1ni1atk408P1KfioEL8M001VzEUxMzPpG/ouUbJxqeP6lX+VTbs2LVmP6VEU/WATsDZfhmLmVx5Ud1UAAAAAAAAAAAAAAAAPry9QB43cmzamYuXKYmOWu/pxa1za2PRuiLlX+un5BviRXtn2WY+9T4na9/lbtx869wWhEjbF/nbtz8a93rTtmf77MaesVArDQt7Wx6t1UXKJ+tLatZNm7MRbuUzM8td/TiD1D54eoAAAAAAAAAAA+aqoppmqqYiI4zM7o+7zycijGt+O5PxHqgZeZdyqta50pif20xwgFTI2tbo1izT45jnyhMvZ2Re/9XJiPSnd+Gv/ABwYBnjGk7/liN3Dd8bgBkYAZ1PvPVgAOWkbvgAbNjOyLGnguTpHKd8KeNta3XpF6nwT68p7IbIOqpqiqmKqZiaZ4TE7p+76c1iZd3Fr1tzrGu+iea/jZFGTbiu3PzHOAewAAAAAAAOd2lfm/k1b/wBlEzTTHxu/LUZ136ywAAAAAAAAAAAAB+G1s3ImzlUzM/sqmKavxr1arMbuAOsAAAAAAAByQueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwIYueT4/vu9Y7Hk+P77vWOwKIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//Z'"  alt="..." /></div>
 
                                     <div class="ms-3">
                                         <div class="fw-bold">Commenter Name</div>

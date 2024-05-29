@@ -49,12 +49,14 @@ public class ClubController {
             clubService.updateClub(club);
             return "redirect:/clubs";
         }
+
         model.addAttribute("club" , club);
         return "clubs-edit";
     }
     @GetMapping("clubs/{clubId}")
     public String getDetail(@PathVariable("clubId") Long clubId , Model model){
         ClubDto clubDto  = clubService.findClubById(clubId);
+        System.out.println(clubDto);
         model.addAttribute("club",clubDto);
         return "clubs-detail";
     }
