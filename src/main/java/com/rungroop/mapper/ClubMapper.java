@@ -11,6 +11,7 @@ public class ClubMapper {
                 .content(clubDto.getContent())
                 .title(clubDto.getTitle())
                 .photoUrl(clubDto.getPhotoUrl())
+                .createdBy(clubDto.getCreatedBy())
                 .createdOn(clubDto.getCreatedOn())
                 .updatedOn(clubDto.getUpdatedOn())
                 .build();
@@ -22,6 +23,7 @@ public class ClubMapper {
                 .Id(club.getId())
                 .title(club.getTitle())
                 .content(club.getContent())
+                .createdBy(club.getCreatedBy())
                 .photoUrl(club.getPhotoUrl())
                 .createdOn(club.getCreatedOn())
                 .updatedOn(club.getUpdatedOn())

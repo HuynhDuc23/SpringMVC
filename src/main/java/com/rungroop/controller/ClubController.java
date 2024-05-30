@@ -2,7 +2,10 @@ package com.rungroop.controller;
 
 import com.rungroop.dto.ClubDto;
 import com.rungroop.models.Club;
+import com.rungroop.models.UserEntity;
+import com.rungroop.security.SecurityUtil;
 import com.rungroop.service.ClubService;
+import com.rungroop.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +18,24 @@ import java.util.List;
 @Controller
 public class ClubController {
     private ClubService clubService ;
+    private UserService userService;
     @Autowired
-    public ClubController (ClubService clubService){
+    public ClubController (ClubService clubService , UserService userService){
+        this.userService = userService ;
         this.clubService = clubService;
     }
     @GetMapping("/clubs")
     public String listClubs(Model model){
+
+
+        UserEntity user = new UserEntity();
        List<ClubDto> clubs =  clubService.findAllClubs();
+       String username = SecurityUtil.getSessionUse();
+       if(username != null){
+           user =  userService.findByUsername(username);
+           model.addAttribute("user",user);
+       }
+        model.addAttribute("user",user);
        model.addAttribute("clubs" , clubs);
        return "clubs-list";
     }

@@ -15,7 +15,9 @@
                     <img class="card-img-top" th:src="${event.getPhotoUrl()}" alt="..." />
                 </div>
                 <div class="mt-2">
-                    <a class="btn btn-primary" th:href="@{/events/{eventId}/edit(eventId=${event.getId()})}" >Edit</a>
+                    <div th:href="${user.id} == ${club.createdBy.id}">
+                        <a class="btn btn-primary" th:href="@{/events/{eventId}/edit(eventId=${event.getId()})}" >Edit</a>
+                    </div>
                     <a class="btn btn-primary" th:href="@{/events/{eventId}(eventId=${event.getId()})}" >View</a>
                 </div>
             </div>
