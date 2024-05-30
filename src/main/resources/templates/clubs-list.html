@@ -11,6 +11,12 @@
          <div th:if="${param.success}" class="alert alert-success">
              You Are Registered Sucess!
          </div>
+        <div th:if="${param.successLogin}" class="alert alert-success">
+              You are Login Sucess!
+        </div>
+        <div th:if="${param.continue}" class="alert alert-success">
+            You are Login Sucess!
+        </div>
          <div>
              <form th:action="@{/clubs/search}" method="POST"   class="form-inline my-2 my-lg-0 mb-3">
                  <input name="query" class="form-control  mr-sm-2 mb-5" type="search" placeholder="Search"
